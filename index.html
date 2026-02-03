@@ -44,7 +44,7 @@
         <div class="card">
             <h3>🔌 开发者接入</h3>
             <p>1. <strong>名片地址:</strong> <code>https://thincontext.shop/.well-known/agent.json</code></p>
-            <p>2. <strong>API 端点:</strong> <code>https://bjerre-thincontext-squeezer.hf.space/v1/squeeze</code></p>
+            <p>2. <strong>API 端点:</strong> <code>https://jonasfub-thincontext-squeezer.hf.space/v1/squeeze</code></p>
             <p>3. <strong>MCP 链接:</strong> <code>https://thincontext.shop/mcp</code></p>
         </div>
     </div>
@@ -53,7 +53,7 @@
         // 自动获取后端实时数据
         async function fetchStats() {
             try {
-                const res = await fetch('https://bjerre-thincontext-squeezer.hf.space/');
+                const res = await fetch('https://jonasfub-thincontext-squeezer.hf.space/');
                 const data = await res.json();
                 document.getElementById('total-saved').innerText = data.global_impact.total_value_created;
                 document.getElementById('active-agents').innerText = data.global_impact.agents_served;
