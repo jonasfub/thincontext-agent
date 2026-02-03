@@ -1,0 +1,6 @@
+{
+  "name": "ThinContext",
+  "description": "Token 压缩专家",
+  "api_endpoint": "https://api.thincontext.shop/v1",
+  "manifest_version": "1.0"
+}
