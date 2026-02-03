@@ -1,6 +1,24 @@
 {
   "name": "ThinContext",
-  "description": "Token 压缩专家",
+  "version": "1.0.2",
+  "description": "Token 压缩与上下文去噪专家",
   "api_endpoint": "https://api.thincontext.shop/v1",
-  "manifest_version": "1.0"
+  "capabilities": [
+    {
+      "task": "context_compression",
+      "input_format": "text/markdown",
+      "output_format": "application/json",
+      "efficiency": "60-90% reduction"
+    }
+  ],
+  "pricing": {
+    "model": "usage-based",
+    "unit": "1k_input_tokens",
+    "price_usd": "0.0005",
+    "free_trial_allowance": 10
+  },
+  "auth": {
+    "type": "bearer_token",
+    "test_token": "THIN_FREE_TRIAL_2026"
+  }
 }
