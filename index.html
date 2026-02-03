@@ -1,22 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>ThinContext - AI Context Optimization</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThinContext - 极致 AI 上下文压缩服务</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #0f172a; color: white; margin: 0; }
-        .card { text-align: center; border: 1px solid #334155; padding: 2rem; border-radius: 1rem; background: #1e293b; }
-        h1 { color: #38bdf8; }
-        .status { color: #4ade80; font-weight: bold; }
+        :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; }
+        body { font-family: 'Inter', system-ui, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .container { max-width: 800px; width: 90%; padding: 40px 0; }
+        .header { text-align: center; margin-bottom: 50px; }
+        h1 { font-size: 3rem; color: var(--primary); margin-bottom: 10px; }
+        .badge { background: #0ea5e9; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .card { background: var(--card); border: 1px solid #334155; padding: 30px; border-radius: 16px; margin-bottom: 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: center; }
+        .stat-val { font-size: 1.5rem; font-weight: bold; color: var(--primary); display: block; }
+        .btn { display: inline-block; background: var(--primary); color: var(--bg); padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; cursor: pointer; border: none; transition: transform 0.2s; }
+        .btn:hover { transform: scale(1.05); }
+        code { background: #000; padding: 2px 6px; border-radius: 4px; color: #4ade80; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>ThinContext.shop</h1>
-        <p>AI 代理上下文压缩服务已上线</p>
-        <p class="status">● 系统运行正常 (MCP 兼容)</p>
-        <hr style="border: 0.5px solid #334155;">
-        <p><small>API Endpoint: https://bjerre-thincontext-squeezer.hf.space</small></p>
-        <p><a href="/.well-known/agent.json" style="color: #38bdf8;">查看 Agent 名片</a></p>
+    <div class="container">
+        <div class="header">
+            <h1>ThinContext<span style="color:white">.shop</span></h1>
+            <p>为 AI Agent 深度瘦身，节省高达 70% 的 API 账单</p>
+            <span class="badge">MCP 协议已就绪</span>
+        </div>
+
+        <div class="card">
+            <h3>📈 全网运行实况</h3>
+            <div class="stats-grid">
+                <div><span class="stat-val" id="total-saved">$0.00</span><span>累计为客户节省</span></div>
+                <div><span class="stat-val" id="active-agents">0</span><span>已接入 Agent 节点</span></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>💰 账户充值 (Stripe 接入)</h3>
+            <p>充值 <code>$5.00</code> 即可获得约 10,000 次高阶压缩点数。</p>
+            <button class="btn" onclick="recharge()">立即为 Agent 充值</button>
+        </div>
+
+        <div class="card">
+            <h3>🔌 开发者接入</h3>
+            <p>1. <strong>名片地址:</strong> <code>https://thincontext.shop/.well-known/agent.json</code></p>
+            <p>2. <strong>API 端点:</strong> <code>https://bjerre-thincontext-squeezer.hf.space/v1/squeeze</code></p>
+            <p>3. <strong>MCP 链接:</strong> <code>https://thincontext.shop/mcp</code></p>
+        </div>
     </div>
+
+    <script>
+        // 自动获取后端实时数据
+        async function fetchStats() {
+            try {
+                const res = await fetch('https://bjerre-thincontext-squeezer.hf.space/');
+                const data = await res.json();
+                document.getElementById('total-saved').innerText = data.global_impact.total_value_created;
+                document.getElementById('active-agents').innerText = data.global_impact.agents_served;
+            } catch (e) { console.error("无法加载实况数据"); }
+        }
+        fetchStats();
+
+        function recharge() {
+            const agentId = prompt("请输入您的 Agent ID (用于识别充值账户):", "Alpha_Agent_001");
+            if (agentId) {
+                // 替换成你的 Stripe 测试/正式支付链接
+                const stripeUrl = "https://buy.stripe.com/test_bJe8wPe0r972f8ZgyP9IQ00";
+                window.location.href = `${stripeUrl}?client_reference_id=${agentId}`;
+            }
+        }
+    </script>
 </body>
 </html>
