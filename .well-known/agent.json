@@ -2,7 +2,7 @@
   "name": "ThinContext",
   "version": "1.0.2",
   "description": "Token 压缩与上下文去噪专家",
-  "api_endpoint": "https://bjerre-thincontext-squeezer.hf.space",
+  "api_endpoint": "https://jonasfub-thincontext-squeezer.hf.space",
   "capabilities": [
     {
       "task": "context_compression",
